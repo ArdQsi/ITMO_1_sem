@@ -1,0 +1,30 @@
+\pagestyle{empty}
+\begin{tikzpicture}[node distance = 5cm, circles/.style={scale=2,circle, draw=black, very thick, minimum size=10mm }] %определяем стиль
+    
+    %узлы графа
+    \node[circles]  (b1)               {$b_1$};
+    \node[circles]  (b2) [right=of b1] {$b_2$};
+    \node[circles]  (b3) [right=of b2] {$b_3$}; 
+    \node[circles]  (b4) [below=of b1] {$b_4$};
+    \node[circles]  (b5) [right=of b4] {$b_5$}; 
+    \node[circles]  (b6) [right=of b5] {$b_6$};
+    \node[circles]  (b7) [below=of b6] {$b_7$}; 
+    
+    %соединение узлов
+    \path [->] %\draw [добавить стрелочку]
+    (b1) edge [loop left]  node {\huge$z_1$}() %закругленная стрелка слева (node - узел)
+         edge node[above] {\huge$z_3$} (b2) % (с какого узла) [над линией сделать надпись] (до какого узла)
+         edge node[above] {\huge$z_2$} (b5)
+    (b2) edge [loop above]  node {\huge$z_2$}()
+         edge node[above right,near start]  {\huge$z_1$} (b6)
+    (b3) edge node[above] {\huge$z_2$} (b2)
+         edge [bend left] node [right] {\huge$z_1$} (b6) %стрелка изгибается слева от направления заданного направления
+    (b4) edge [loop left]  node {\huge$z_3$}()
+         edge node[left]  {\huge$z_1$} (b1)
+    (b5) edge node[below] {\huge$z_2$} (b4)
+         edge node[above left,near start]  {\huge$z_3$} (b3)
+    (b6) edge node[left]  {\huge$z_3$} (b3)
+         edge [bend left] node [below] {\huge$z_2$} (b4)
+         edge node[right] {\huge$z_7$} (b7);
+         
+\end{tikzpicture}
